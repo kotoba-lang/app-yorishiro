@@ -1,0 +1,53 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:fly10001.etzhayyim.com",
+  "name": "yorishiro-flyio",
+  "nanoid": "fly10001",
+  "component": {
+    "env": {
+      "MURAKUMO_URL": "https://murakumo.etzhayyim.com/api/openai/v1/chat/completions"
+    }
+  },
+  "convoSystemPrompt": "You are the yorishiro-flyio agent — browser automation adapter for Fly.io account management and account closure (解約). You navigate fly.io via yorishiro-provider (Playwright), retrieve account/app/org info, and execute destructive operations only when the user explicitly confirms. Credentials are stored in provider-vault; never exposed. All cancellation steps are logged to the audit graph. Respond in the user's language.",
+  "profile": {
+    "displayName": "Yorishiro — Fly.io 解約",
+    "description": "Fly.io アカウント管理・解約自動化エージェント — app 削除 / org 削除 / アカウント閉鎖を browser automation で実行",
+    "avatar": "飛",
+    "category": "infrastructure",
+    "isBot": true,
+    "agentType": "semi-autonomous",
+    "operator": "etzhayyim.com",
+    "capabilities": [
+      "flyio-account-query",
+      "flyio-app-delete",
+      "flyio-org-delete",
+      "flyio-account-close",
+      "browser-automation"
+    ]
+  },
+  "space": {
+    "name": "Yorishiro Fly.io 解約",
+    "description": "Fly.io アカウント解約 ops project convo",
+    "joinRule": "invite",
+    "historyVisibility": "shared",
+    "convos": [
+      {
+        "name": "flyio-ops",
+        "kind": "private",
+        "description": "解約ステップ確認・承認",
+        "default": true
+      }
+    ]
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.yorishiro.flyio.cancellationJob",
+        "com.etzhayyim.yorishiro.flyio.appDeleteJob",
+        "com.etzhayyim.yorishiro.flyio.orgDeleteJob"
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "kotodama-jp4n41y0",
+  "main": "svelte/.svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-03-17",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_als"
+  ],
+  "vars": {
+    "APP_ACTOR_HANDLE": "yorishiro-japanpost-enaiyo",
+    "APP_CAPABILITIES": "[\"enaiyo-draft\",\"enaiyo-submit\",\"enaiyo-receipt\",\"enaiyo-tracking\",\"browser-automation\"]",
+    "APP_DESCRIPTION": "日本郵便 Webゆうびん 電子内容証明 (e-naiyo) 自動提出エージェント — sender/recipient 入力、browser 経由で post.japanpost.jp 提出、受領番号 + PDF 取得",
+    "APP_DISPLAY_NAME": "Yorishiro — 日本郵便 電子内容証明",
+    "APP_EMBED_URL": "https://jp4n41y0.etzhayyim.com/?embed=1",
+    "APP_FRAMEWORK": "sveltekit-edge-bff",
+    "APP_NANOID": "jp4n41y0",
+    "APP_PERFORMER_TYPE": "",
+    "APP_UI_TYPE": "appview",
+    "MURAKUMO_URL": "https://murakumo.etzhayyim.com/api/openai/v1/chat/completions",
+    "AGENTGATEWAY_MCP_ROUTER_URL": "https://mcp.etzhayyim.com/xrpc/com.etzhayyim.mcp.message"
+  },
+  "rules": [
+    {
+      "type": "CompiledWasm",
+      "globs": [
+        "**/*.wasm"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "jp4n41y0.etzhayyim.com/*",
+      "zone_name": "etzhayyim.com"
+    }
+  ],
+  "assets": {
+    "directory": "./svelte/.svelte-kit/cloudflare/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

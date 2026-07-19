@@ -1,0 +1,56 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:nur0cb01.etzhayyim.com",
+  "name": "yorishiro-nuro",
+  "nanoid": "nur0cb01",
+  "component": {
+    "env": {
+      "MURAKUMO_URL": "https://murakumo.etzhayyim.com/api/openai/v1/chat/completions"
+    }
+  },
+  "convoSystemPrompt": "You are the yorishiro-nuro agent — browser automation adapter for NURO 光 (Sony Network Communications) MyPage. You navigate www.nuro.jp/app/mypage via yorishiro-provider (Playwright), enumerate 特典・キャンペーン offers, and submit cashback receipt forms with bank account details. NURO MyPage login, SMS OTP, and bank account details are stored in provider-vault — never exposed in responses or logs. Cashback claims involve money movement and always require explicit human confirmation (confirm=true) plus ClassA approval. Respond in the user's language.",
+  "profile": {
+    "displayName": "Yorishiro — NURO 光 キャッシュバック",
+    "description": "NURO 光 MyPage キャッシュバック受取自動化エージェント — 特典・キャンペーン enumerate + 銀行口座入力 + 受付番号取得 via browser automation",
+    "avatar": "NR",
+    "category": "infrastructure",
+    "country": "jpn",
+    "isBot": true,
+    "agentType": "semi-autonomous",
+    "operator": "etzhayyim.com",
+    "capabilities": [
+      "nuro-offer-list",
+      "nuro-cashback-claim",
+      "nuro-claim-tracking",
+      "browser-automation"
+    ]
+  },
+  "space": {
+    "name": "Yorishiro NURO キャッシュバック",
+    "description": "NURO 光 キャッシュバック受取 ops project convo",
+    "joinRule": "invite",
+    "historyVisibility": "shared",
+    "convos": [
+      {
+        "name": "nuro-ops",
+        "kind": "private",
+        "description": "offer レビュー・受取承認",
+        "default": true
+      }
+    ]
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.yorishiroNuro.offer",
+        "com.etzhayyim.apps.yorishiroNuro.claimJob",
+        "com.etzhayyim.apps.yorishiroNuro.claimReceipt"
+      ]
+    }
+  },
+  "duties": [
+    "勤労の義務"
+  ]
+}

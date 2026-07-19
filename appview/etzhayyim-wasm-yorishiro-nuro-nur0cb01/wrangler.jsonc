@@ -1,0 +1,42 @@
+{
+  "name": "kotodama-nur0cb01",
+  "main": "svelte/.svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-03-17",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_als"
+  ],
+  "vars": {
+    "APP_ACTOR_HANDLE": "yorishiro-nuro",
+    "APP_CAPABILITIES": "[\"nuro-offer-list\",\"nuro-cashback-claim\",\"nuro-claim-tracking\",\"browser-automation\"]",
+    "APP_DESCRIPTION": "NURO 光 MyPage キャッシュバック受取自動化エージェント — 特典・キャンペーン enumerate + 銀行口座入力 + 受付番号取得 via browser automation",
+    "APP_DISPLAY_NAME": "Yorishiro — NURO 光 キャッシュバック",
+    "APP_EMBED_URL": "https://nur0cb01.etzhayyim.com/?embed=1",
+    "APP_FRAMEWORK": "sveltekit-edge-bff",
+    "APP_NANOID": "nur0cb01",
+    "APP_PERFORMER_TYPE": "",
+    "APP_UI_TYPE": "appview",
+    "MURAKUMO_URL": "https://murakumo.etzhayyim.com/api/openai/v1/chat/completions",
+    "AGENTGATEWAY_MCP_ROUTER_URL": "https://mcp.etzhayyim.com/xrpc/com.etzhayyim.mcp.message"
+  },
+  "rules": [
+    {
+      "type": "CompiledWasm",
+      "globs": [
+        "**/*.wasm"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "nur0cb01.etzhayyim.com/*",
+      "zone_name": "etzhayyim.com"
+    }
+  ],
+  "assets": {
+    "directory": "./svelte/.svelte-kit/cloudflare/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

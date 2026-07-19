@@ -1,0 +1,175 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Project",
+  "name": "Yorishiro — Web Service Browser Automation",
+  "identifier": "etzhayyim-project-yorishiro",
+  "description": "Apify-inspired web service abstraction layer. A native Go provider (Playwright/Chromium) exports browser automation primitives; per-service TinyGo wasm components encode service-specific navigation logic and export typed gRPC/MCP interfaces. Yorishiro (依り代) channels external web services into the etzhayyim.com wRPC mesh.",
+  "hasPart": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro Provider",
+      "description": "Native Go provider with Playwright Chromium browser pool. Exports etzhayyim:yorishiro/browser, session-store, auth via wRPC.",
+      "applicationCategory": "capability-provider",
+      "runtimePlatform": "native-go"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro Google Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-google-g00gl3ws",
+      "description": "Google web service adapter — Search, Gmail, Drive, Calendar.",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro Microsoft Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-microsoft-m5ftws0t",
+      "description": "Microsoft 365 adapter — Outlook, OneDrive, Teams.",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro AWS Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-aws-4w5c0n5l",
+      "description": "AWS Management Console adapter — Console, EC2, S3, CloudWatch, IAM.",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro X Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-x-x7w1tt3r",
+      "description": "X (Twitter) adapter — Timeline, Compose, Profile, DM, Notifications.",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro LinkedIn Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-linkedin-l1nk3d1n",
+      "description": "LinkedIn adapter — Feed, Profile, Messaging, Jobs.",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro MUFG Card Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-mufg-card-mufgcrd1",
+      "description": "MUFG Card adapter — public site navigation, notices, and member portal automation.",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro TrafficStars Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-trafficstars-tr4f1c5t",
+      "description": "TrafficStars ad network publisher automation — Sites, Spots, Statistics, Ad Tags. API-based (not Playwright).",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro ExoClick Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-exoclick-ex0cl1ck",
+      "description": "ExoClick ad network publisher automation — Sites, Zones, and Ad Tags via ExoClick API v2.",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro HumeAI Voice Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-humeai-humev01c",
+      "description": "HumeAI voice generation adapter for toddler read-aloud audio output.",
+      "applicationCategory": "wasm-component",
+      "runtimePlatform": "tinygo-wasm"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yorishiro Japanpost e-Naiyo Adapter",
+      "identifier": "etzhayyim-wasm-yorishiro-japanpost-enaiyo-jp4n41y0",
+      "description": "日本郵便 Webゆうびん 電子内容証明 (e-naiyo) 自動提出 — draft/submit/receipt/tracking via post.japanpost.jp browser automation.",
+      "applicationCategory": "ts-native-worker",
+      "runtimePlatform": "ts-native"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Provider Vault Provider",
+      "description": "Native Go provider wrapping HashiCorp Vault KV v2. Secure credential storage for external service API keys, scoped by user_id/org_id.",
+      "applicationCategory": "capability-provider",
+      "runtimePlatform": "native-go"
+    }
+  ],
+  "performers": [
+    {
+      "@type": "Service",
+      "name": "yorishiro-provider",
+      "description": "Native Go Playwright provider — browser pool, session store, auth helpers"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-google",
+      "identifier": "g00gl3ws",
+      "description": "Google Search + Gmail + Drive + Calendar via browser automation"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-microsoft",
+      "identifier": "m5ftws0t",
+      "description": "Outlook + OneDrive + Teams via browser automation"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-aws",
+      "identifier": "4w5c0n5l",
+      "description": "AWS Console + EC2 + S3 + CloudWatch + IAM via browser automation"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-x",
+      "identifier": "x7w1tt3r",
+      "description": "X Timeline + Compose + Profile + DM + Notifications via browser automation"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-linkedin",
+      "identifier": "l1nk3d1n",
+      "description": "LinkedIn Feed + Profile + Messaging + Jobs via browser automation"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-mufg-card",
+      "identifier": "mufgcrd1",
+      "description": "MUFG Card public site + notices + member portal via browser automation"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-trafficstars",
+      "identifier": "tr4f1c5t",
+      "description": "TrafficStars ad network — Sites + Spots + Statistics + Ad Tags via REST API"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-exoclick",
+      "identifier": "ex0cl1ck",
+      "description": "ExoClick ad network — Sites + Zones + Ad Tags via API v2"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-humeai-voice",
+      "identifier": "humev01c",
+      "description": "HumeAI TTS voice generation for read-aloud scenarios"
+    },
+    {
+      "@type": "Service",
+      "name": "yorishiro-japanpost-enaiyo",
+      "identifier": "jp4n41y0",
+      "description": "日本郵便 電子内容証明 (e-naiyo) 提出自動化 — draft + submit + receipt + tracking via post.japanpost.jp"
+    },
+    {
+      "@type": "Service",
+      "name": "provider-vault-provider",
+      "description": "HashiCorp Vault KV v2 — secure credential storage for external services (user_id/org_id scoped)"
+    }
+  ]
+}

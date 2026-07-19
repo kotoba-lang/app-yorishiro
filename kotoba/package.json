@@ -1,0 +1,12 @@
+{
+  "name": "@etzhayyim/yorishiro-kotoba",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "kotoba product-front of yorishiro (Consensys c-split, kotoba-E2E). PLAINTEXT: public personification-vessel anchor catalog. E2E (kotoba, ADR-2605181100): crypto-exchange freeze-request LE/confidential incident records sealed via sdk.encryptedWrite/Read (read-cap = owner DID + recipients). Browser-automation execution + Vault credential custody + the freeze ACTION stay etzhayyim via consent-capability. Founder directive 2026-06-03: PII/CUI/LE migrate when E2E-safe.",
+  "license": "Apache-2.0",
+  "main": "src/index.ts",
+  "scripts": { "typecheck": "tsc --noEmit", "test": "vitest run" },
+  "dependencies": { "@etzhayyim/sdk": "git+https://github.com/etzhayyim/com-etzhayyim-sdk.git#12314a0cc5ac2feb49dd9789d5c002398acb6988" },
+  "devDependencies": { "@etzhayyim/sdk-mock": "git+https://github.com/etzhayyim/com-etzhayyim-sdk-mock.git#c857ff9be5310bf433bfe1e8d3c0f677e213d667", "typescript": "^5.6.0", "vitest": "^4.1.0" }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@etzhayyim/yorishiro-nuro-provider",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Playwright flow for NURO 光 (Sony Network Communications) MyPage cashback receipt automation. SKELETON — pin selectors against live site before production use.",
+  "main": "flow.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "staging": "tsx staging-test.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

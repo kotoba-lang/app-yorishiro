@@ -1,0 +1,42 @@
+{
+  "name": "kotodama-sqddf3sp",
+  "main": "svelte/.svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-03-17",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_als"
+  ],
+  "vars": {
+    "APP_ACTOR_HANDLE": "yorishiro-squarespace",
+    "APP_CAPABILITIES": "[\"squarespace-domain-query\",\"squarespace-domain-unlock\",\"squarespace-auth-code\",\"squarespace-dns-export\",\"browser-automation\"]",
+    "APP_DESCRIPTION": "Squarespace domain management agent — browser automation for transfer release, DNS export, auto-renew control",
+    "APP_DISPLAY_NAME": "Yorishiro — Squarespace",
+    "APP_EMBED_URL": "https://sqddf3sp.etzhayyim.com/?embed=1",
+    "APP_FRAMEWORK": "sveltekit-edge-bff",
+    "APP_NANOID": "sqddf3sp",
+    "APP_PERFORMER_TYPE": "service",
+    "APP_UI_TYPE": "appview",
+    "CLOUDFLARE_ACCOUNT_ID": "4da88288dc30d9ee257f319d3c33ecf0",
+    "AGENTGATEWAY_MCP_ROUTER_URL": "https://mcp.etzhayyim.com/xrpc/com.etzhayyim.mcp.message"
+  },
+  "rules": [
+    {
+      "type": "CompiledWasm",
+      "globs": [
+        "**/*.wasm"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "sqddf3sp.etzhayyim.com/*",
+      "zone_name": "etzhayyim.com"
+    }
+  ],
+  "assets": {
+    "directory": "./svelte/.svelte-kit/cloudflare/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

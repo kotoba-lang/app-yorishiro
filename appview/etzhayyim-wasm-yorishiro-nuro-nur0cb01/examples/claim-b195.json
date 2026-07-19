@@ -1,0 +1,7 @@
+{
+  "_comment": "claimCashback payload for B195 20,000円キャッシュバック (NURO 光 2ギガ マンション タイプL). bankVaultKey points at provider-vault nuro/bankAccount/primary — the bank account itself is never passed over the wire. idempotencyKey is stable per (user, campaignCode).",
+  "campaignCode": "B195",
+  "bankVaultKey": "primary",
+  "idempotencyKey": "nuro-b195-2026",
+  "confirm": true
+}
