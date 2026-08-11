@@ -1,1 +1,6 @@
-{:schema "etzhayyim.repository/readme-v1" :name "com-etzhayyim-app-yorishiro" :kind :application :source "etzhayyim/root/60-apps/etzhayyim-project-yorishiro"}
+{:schema "etzhayyim.repository/readme-v1"
+ :name "app-yorishiro"
+ :kind :application
+ :source "etzhayyim/root/60-apps/etzhayyim-project-yorishiro"
+ :boundary {:role :browser-automation-application
+            :automation-substrate "kotoba-lang/karakuri"}}
