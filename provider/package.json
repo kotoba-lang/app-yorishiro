@@ -1,0 +1,16 @@
+{
+  "name": "@etzhayyim/yorishiro-provider-shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared provider-side pieces (Vault client) and their tests. The per-service flows live in ./nuro and ./japanpost-enaiyo.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "typescript": "^5.6.0",
+    "vitest": "^4.1.0"
+  }
+}

@@ -104,11 +104,17 @@ Pin the exact allow-list against MyPage during staging.
 1. `pnpm install` in this directory
 2. `pnpm exec playwright install chromium`
 3. Run `staging-test.ts` headed → update `SEL.*` in `flow.ts`
-4. Register credentials + bank account via vault (see above)
-5. End-to-end dry run: stop before the final "申請" click; verify form values
-6. Wire `handleInvoke` into the provider's wRPC invoke dispatcher
-7. Add monitoring: failed claims → alert, receipt capture rate < 100% → alert
-8. Set up B2 bucket + IAM for screenshot upload (`uploadScreenshotToR2` stub)
+4. Point the runner at your Vault: set `VAULT_URL` (must be `https://`; plain
+   `http://` is accepted only for a loopback dev Vault) and `VAULT_TOKEN` in the
+   runner's environment. **Both are required and have no defaults** — the runner
+   refuses to start a Vault read if either is missing, blank, or cleartext to a
+   non-loopback host, rather than falling back to some host that happens to
+   answer. See `provider/vault-client.ts`.
+5. Register credentials + bank account via vault (see above)
+6. End-to-end dry run: stop before the final "申請" click; verify form values
+7. Wire `handleInvoke` into the provider's wRPC invoke dispatcher
+8. Add monitoring: failed claims → alert, receipt capture rate < 100% → alert
+9. Set up B2 bucket + IAM for screenshot upload (`uploadScreenshotToR2` stub)
 
 ## Safety
 

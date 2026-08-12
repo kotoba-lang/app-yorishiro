@@ -11,19 +11,9 @@
  */
 
 import { runJapanpostEnaiyoSingle, runJapanpostEnaiyoBatch, type EnaiyoCredentials } from "./flow.js";
+import { vaultGet } from "../vault-client.js";
 
 const ENAIYO_APP_BASE = "https://jp4n41y0.etzhayyim.com";
-const VAULT_URL = process.env.VAULT_URL ?? "http://vault:8200";
-const VAULT_TOKEN = process.env.VAULT_TOKEN ?? "";
-
-async function vaultGet(path: string): Promise<Record<string, string>> {
-  const r = await fetch(`${VAULT_URL}/v1/${path}`, {
-    headers: { "X-Vault-Token": VAULT_TOKEN },
-  });
-  if (!r.ok) throw new Error(`vault get ${path} failed: ${r.status}`);
-  const j = (await r.json()) as { data: { data: Record<string, string> } };
-  return j.data.data;
-}
 
 async function loadCredentials(orgId: string, userId: string): Promise<EnaiyoCredentials> {
   const path = `secret/data/orgs/${orgId}/users/${userId}/services/japanpost-enaiyo/primary`;

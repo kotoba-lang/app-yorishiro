@@ -82,11 +82,17 @@ curl -X POST https://yorishiro.etzhayyim.com/xrpc/etzhayyim.providerVault.creden
 1. `pnpm install` in this directory
 2. `pnpm exec playwright install chromium`
 3. Run `staging-test.ts` headed → update `SEL.*` in `flow.ts`
-4. Register credentials via vault (see above)
-5. End-to-end test with a non-production recipient (e.g. your own address)
-6. Wire `handleInvoke` into the provider's wRPC invoke dispatcher
-7. Add monitoring: failed submissions → alert, receipt capture rate < 100% → alert
-8. Set up B2 bucket + IAM for receipt PDF upload (`uploadPdfToR2` stub)
+4. Point the runner at your Vault: set `VAULT_URL` (must be `https://`; plain
+   `http://` is accepted only for a loopback dev Vault) and `VAULT_TOKEN` in the
+   runner's environment. **Both are required and have no defaults** — the runner
+   refuses to start a Vault read if either is missing, blank, or cleartext to a
+   non-loopback host, rather than falling back to some host that happens to
+   answer. See `provider/vault-client.ts`.
+5. Register credentials via vault (see above)
+6. End-to-end test with a non-production recipient (e.g. your own address)
+7. Wire `handleInvoke` into the provider's wRPC invoke dispatcher
+8. Add monitoring: failed submissions → alert, receipt capture rate < 100% → alert
+9. Set up B2 bucket + IAM for receipt PDF upload (`uploadPdfToR2` stub)
 
 ## Safety
 
