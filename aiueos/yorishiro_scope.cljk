@@ -1,0 +1,67 @@
+(ns yorishiro.scope
+  "yorishiro（依り代）判定コア — itonami dapp bundle（pure, :effects #{}）。
+
+  外部サービス接続の資格情報 scope とジョブの判定（正本: AGENTS.md の
+  provider-vault パス構造 + appview の app.ts のジョブ発行）:
+
+  - **資格情報は vault の scope に閉じる**:
+    `secret/data/orgs/{org}/users/{user}/services/{service}/{key}`。
+    呼び出し元の org・user・対象 service の**3 つすべて**が一致するときだけ
+    取れる（どれか違えば外 = fail closed）。
+  - **ジョブは pending → queued（jobId + phase）**。必須が無いと発行しない。
+
+  scope-judgment のエラービット（0 = scope 内）:
+    1 :org-mismatch     org が呼び出し元でない
+    2 :user-mismatch    user が呼び出し元でない
+    4 :service-mismatch 対象 service でない
+    8 :key-missing      key が無い
+  confined: 1 = 3 つすべて一致（scope 内）
+  job-queued: 1 = 発行（pending → queued）/ 0 = 拒否
+
+  実行 host はスカラーのみ = KIR v3 / i64/direct ABI（kernel/selfhost 両対応）。
+
+  テストはゼロ引数 test-*、戻り 1/0:
+  <amu> test aiueos/yorishiro_scope.cljk"
+  (:export [main scope-judgment confined job-queued
+            test-confined test-org test-user test-service test-key
+            test-job test-fail-closed]))
+
+(defn main [] :i64
+  0)
+
+(defn scope-judgment [org-match :i64 user-match :i64 service-match :i64 key-present :i64] :i64
+  (+ (if (= org-match 1) 0 1)
+     (if (= user-match 1) 0 2)
+     (if (= service-match 1) 0 4)
+     (if (= key-present 1) 0 8)))
+
+(defn confined [org-match :i64 user-match :i64 service-match :i64] :i64
+  (if (= (scope-judgment org-match user-match service-match 1) 0) 1 0))
+
+(defn job-queued [has-required :i64] :i64
+  (if (= has-required 1) 1 0))
+
+;; --- tests（戻り 1 = pass） ------------------------------------------------
+
+(defn test-confined [] :i64
+  ;; 3 つすべて一致のときだけ scope 内
+  (if (= (+ (confined 1 1 1) (confined 1 1 0)) 1) 1 0))
+
+(defn test-org [] :i64
+  (if (= (scope-judgment 0 1 1 1) 1) 1 0))
+
+(defn test-user [] :i64
+  (if (= (scope-judgment 1 0 1 1) 2) 1 0))
+
+(defn test-service [] :i64
+  (if (= (scope-judgment 1 1 0 1) 4) 1 0))
+
+(defn test-key [] :i64
+  (if (= (scope-judgment 1 1 1 0) 8) 1 0))
+
+(defn test-job [] :i64
+  (if (= (+ (job-queued 1) (job-queued 0)) 1) 1 0))
+
+(defn test-fail-closed [] :i64
+  ;; すべて外れると 15（全ビット）
+  (if (= (scope-judgment 0 0 0 0) 15) 1 0))

@@ -1,0 +1,26 @@
+(ns yorishiro.scope-parity-test
+  "aiueos/yorishiro_scope.cljk（判定コア）と正本（AGENTS.md の vault パス +
+  app.ts のジョブ発行）の parity。scope 構造・ジョブ状態が変われば落ちる。"
+  (:require [clojure.test :refer [deftest is testing]]
+            [clojure.string :as str]
+            ["fs" :as fs]))
+
+(def agents (fs/readFileSync "AGENTS.md" "utf8"))
+(def app-src
+  (fs/readFileSync
+   (str/join "/" ["appview" "etzhayyim-wasm-yorishiro-flyio-fly10001" "src" "app.ts"])
+   "utf8"))
+
+(deftest scope-rules-match-guest
+  (testing "guest test-org / test-user / test-service / test-key: vault スコープ構造"
+    (is (str/includes? agents "secret/data/orgs/"))
+    (is (str/includes? agents "/users/"))
+    (is (str/includes? agents "/services/"))
+    (is (str/includes? agents "provider-vault-provider"))))
+
+(deftest job-rules-match-guest
+  (testing "guest test-job: pending → queued（jobId + phase）"
+    (is (str/includes? app-src "pending"))
+    (is (str/includes? app-src "queued"))
+    (is (str/includes? app-src "jobId"))
+    (is (str/includes? app-src "phase"))))

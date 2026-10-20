@@ -1,0 +1,18 @@
+;; app-yorishiro — itonami（dapp）の aiueos アプリ記述子（notes.edn 形）。
+;; 判定コアは aiueos/yorishiro_scope.cljk（資格情報 scope・ジョブ判定）。
+;; 正本は AGENTS.md の provider-vault パス + app.ts のジョブ発行。
+;; pure（:effects #{}）。
+{:aiueos/component :app/yorishiro-scope
+ :aiueos/kind :app
+ :aiueos/trust :untrusted
+ :aiueos/source "yorishiro_scope.cljk"
+ :aiueos/wasm "yorishiro_scope.wasm"
+ :aiueos/entry "main"
+ :aiueos/args []
+ :aiueos/imports #{}
+ :aiueos/exports #{:app/main
+                   :app/scope-judgment
+                   :app/confined
+                   :app/job-queued}
+ :aiueos/effects #{}
+ :aiueos/limits {:memory-pages 16 :fuel 5000000}}
